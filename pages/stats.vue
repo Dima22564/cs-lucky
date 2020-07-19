@@ -114,13 +114,14 @@
           </div>
           <Footer />
         </div>
-        <Chat />
+        <Chat class="mobileChat" />
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import LayerIcon from 'vue-material-design-icons/Layers.vue'
 import UserIcon from 'vue-material-design-icons/Account.vue'
 import StarIcon from 'vue-material-design-icons/Star.vue'
@@ -138,6 +139,14 @@ export default {
     StarIcon,
     EyeIcon,
     History
+  },
+  mounted () {
+    this.changeTabStore(null)
+  },
+  methods: {
+    ...mapMutations({
+      changeTabStore: 'common/changeTab'
+    })
   }
 }
 </script>

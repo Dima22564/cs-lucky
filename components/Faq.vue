@@ -1,5 +1,5 @@
 <template>
-  <div class="faq">
+  <div :class="open ? 'faq_active' : ''" class="faq">
     <div
       @click="open ? open = false : open = true"
       class="faq__top"
@@ -48,6 +48,7 @@ export default {
 
 <style lang="sass">
 @import '../theme/_var'
+@import '../theme/_mix'
 .slide-enter-active, .slide-leave-active
   transition: all 0.5s
 .slide-enter, .slide-leave-to
@@ -58,6 +59,13 @@ export default {
   border-radius: 24px
   width: 100%
   box-shadow: $dark-shadow
+  +lg
+    background-image: none
+    box-shadow: none
+    padding: 32px
+  &_active
+    box-shadow: $dark-shadow
+    background-image: linear-gradient(94deg, #2d2f33 1%, #272a2e 52%, #222529)
   &__top
     display: flex
     align-items: center

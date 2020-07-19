@@ -4,9 +4,53 @@
       <div class="cs-lucky-row">
         <div class="support-content">
           <div class="support__main">
-            <div class="support__chats">
-              <div class="supportChat">
-                <div class="supportChat__img" />
+            <div v-if="(currentTab === 'chats' && getWindowSize < 768) || getWindowSize >= 768" class="support__chats">
+              <div @click="goToChat" class="supportChat supportChat_1">
+                <div class="supportChat__img">
+                  <PlusIcon class="icon-30 icon-30-w icon" />
+                </div>
+                <div class="supportChat__text">
+                  <p class="supportChat__name">
+                    Support Center
+                  </p>
+                  <p class="supportChat__desc">
+                    dfcew wfw effqwf qfwf wfdfv dfdsfv
+                  </p>
+                </div>
+                <RightArrowIcon class="supportChat__arrow" />
+              </div>
+              <div @click="goToChat" class="supportChat supportChat_2">
+                <div class="supportChat__img">
+                  <EmailIcon class="icon-30 icon-30-w icon" />
+                </div>
+                <div class="supportChat__text">
+                  <p class="supportChat__name">
+                    Support Center
+                  </p>
+                  <p class="supportChat__desc">
+                    dfcew wfw effqwf qfwf wfdfv dfdsfv
+                  </p>
+                </div>
+                <RightArrowIcon class="supportChat__arrow" />
+              </div>
+              <div @click="goToChat" class="supportChat supportChat_3">
+                <div class="supportChat__img">
+                  <ShieldIcon class="icon-30 icon-30-w icon" />
+                </div>
+                <div class="supportChat__text">
+                  <p class="supportChat__name">
+                    Support Center
+                  </p>
+                  <p class="supportChat__desc">
+                    dfcew wfw effqwf qfwf wfdfv dfdsfv
+                  </p>
+                </div>
+                <RightArrowIcon class="supportChat__arrow" />
+              </div>
+              <div @click="goToChat" class="supportChat supportChat_4">
+                <div class="supportChat__img">
+                  <LayerIcon class="icon-30 icon-30-w icon" />
+                </div>
                 <div class="supportChat__text">
                   <p class="supportChat__name">
                     Support Center
@@ -16,8 +60,10 @@
                   </p>
                 </div>
               </div>
-              <div class="supportChat">
-                <div class="supportChat__img" />
+              <div @click="goToChat" class="supportChat supportChat_active">
+                <div class="supportChat__img">
+                  <UserIcon class="icon-30 icon-30-w icon" />
+                </div>
                 <div class="supportChat__text">
                   <p class="supportChat__name">
                     Support Center
@@ -26,43 +72,11 @@
                     dfcew wfw effqwf qfwf wfdfv dfdsfv
                   </p>
                 </div>
-              </div>
-              <div class="supportChat">
-                <div class="supportChat__img" />
-                <div class="supportChat__text">
-                  <p class="supportChat__name">
-                    Support Center
-                  </p>
-                  <p class="supportChat__desc">
-                    dfcew wfw effqwf qfwf wfdfv dfdsfv
-                  </p>
-                </div>
-              </div>
-              <div class="supportChat">
-                <div class="supportChat__img" />
-                <div class="supportChat__text">
-                  <p class="supportChat__name">
-                    Support Center
-                  </p>
-                  <p class="supportChat__desc">
-                    dfcew wfw effqwf qfwf wfdfv dfdsfv
-                  </p>
-                </div>
-              </div>
-              <div class="supportChat supportChat_active">
-                <div class="supportChat__img" />
-                <div class="supportChat__text">
-                  <p class="supportChat__name">
-                    Support Center
-                  </p>
-                  <p class="supportChat__desc">
-                    dfcew wfw effqwf qfwf wfdfv dfdsfv
-                  </p>
-                </div>
+                <RightArrowIcon class="supportChat__arrow" />
               </div>
             </div>
 
-            <div class="support__messages">
+            <div v-if="(currentTab === 'messages' && getWindowSize < 768) || getWindowSize >= 768" class="support__messages">
               <div class="messages__top">
                 <div class="supportChat">
                   <div class="supportChat__img" />
@@ -99,32 +113,67 @@
                   <input id="file" class="sendForm__fileInput" type="file" name="file">
                 </label>
                 <textarea id="" name="" class="sendForm__text" placeholder="Your message" />
-                <button class="sendForm__btn"></button>
+                <button class="sendForm__btn">
+                  <ArrowIcon class="icon-30 icon-30-w" />
+                </button>
               </form>
             </div>
           </div>
           <Footer />
         </div>
-        <Chat />
+        <Chat class="mobileChat" />
       </div>
     </div>
   </main>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import ArrowIcon from 'vue-material-design-icons/ArrowUp.vue'
+import EmailIcon from 'vue-material-design-icons/Email.vue'
+import PlusIcon from 'vue-material-design-icons/Plus.vue'
+import ShieldIcon from 'vue-material-design-icons/ShieldHalfFull.vue'
+import LayerIcon from 'vue-material-design-icons/Layers.vue'
+import UserIcon from 'vue-material-design-icons/Account.vue'
+import RightArrowIcon from 'vue-material-design-icons/ChevronRight.vue'
 import Chat from '../components/Chat'
 import Footer from '../components/Footer'
 export default {
   layout: 'default',
   components: {
     Chat,
-    Footer
+    Footer,
+    ArrowIcon,
+    PlusIcon,
+    EmailIcon,
+    ShieldIcon,
+    LayerIcon,
+    UserIcon,
+    RightArrowIcon
+  },
+  data () {
+    return {
+      currentTab: 'chats'
+    }
+  },
+  methods: {
+    goToChat () {
+      if (this.getWindowSize < 768) {
+        this.currentTab = 'messages'
+      }
+    }
+  },
+  computed: {
+    ...mapGetters({
+      getWindowSize: 'common/getWindowSize'
+    })
   }
 }
 </script>
 
 <style lang="sass">
 @import '../theme/_var'
+@import '../theme/_mix'
 .support
   &-content
     display: flex
@@ -132,6 +181,8 @@ export default {
     justify-content: space-between
     width: 100%
     padding-right: 24px
+    +md
+      padding-right: 0
   &__main
     display: flex
   &__chats
@@ -140,6 +191,9 @@ export default {
     flex-shrink: 0
     overflow-y: auto
     height: calc(100vh - 96px - 24px - 58px - 16px)
+    +md
+      margin-right: 0
+      width: 100%
   &__messages
     width: 100%
     border-radius: 24px
@@ -151,10 +205,31 @@ export default {
   padding: 16px
   cursor: pointer
   margin-bottom: 8px
+  &_1
+    .supportChat__img
+      background: #ff5e00
+  &_2
+    .supportChat__img
+      background: #f54562
+  &_3
+    .supportChat__img
+      background: #c32de1
+  &_4
+    .supportChat__img
+      background: #9c42f5
+  &_5
+    .supportChat__img
+      background: #5d2de1
   &_active
     box-shadow: inset 8px 8px 40px 0 rgba(9, 14, 20, 0.4), inset -4px -4px 8px 0 rgba(224, 224, 255, 0.04), inset 0 1px 1px 0 rgba(9, 14, 20, 0.4)
     background-image: linear-gradient(to bottom, #090e14, #222529 60%, #2d2f33)
     border-radius: 48px 12px 12px 48px
+  &__arrow
+    display: none
+    +md
+      display: block
+      color: rgba(224, 224, 255, 0.4)
+      margin-left: 24px
   &__online
     display: flex
     align-items: center
@@ -176,6 +251,8 @@ export default {
     align-items: center
     justify-content: center
     margin-right: 16px
+    .icon
+      height: 31px
   &__name
     font-size: 16px
     color: $white
@@ -183,6 +260,8 @@ export default {
   &__text
     display: flex
     flex-direction: column
+    +md
+      width: 100%
   &__desc
     color: rgba(224, 224, 255, 0.6)
     @extend %font-13-16
@@ -191,6 +270,9 @@ export default {
     overflow: hidden
     text-overflow: ellipsis
     white-space: nowrap
+    +md
+      width: 100%
+      max-width: 100%
 .messages
   &__top
     display: flex

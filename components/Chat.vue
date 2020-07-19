@@ -83,6 +83,7 @@ export default {
 
 <style lang="sass">
 @import '../theme/_var'
+@import '../theme/_mix'
 .chat
   max-width: 352px
   width: 100%
@@ -96,6 +97,13 @@ export default {
   display: flex
   flex-direction: column
   justify-content: space-between
+  +lg
+    height: calc(100vh - 48px - 82px - 24px)
+    max-width: 100%
+    margin-top: 0
+    padding: 0
+    background: transparent
+    position: relative
   &__messages
     overflow-y: scroll
     height: calc(100% - 40px)

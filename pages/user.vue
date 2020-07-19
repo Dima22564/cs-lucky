@@ -15,7 +15,7 @@
             </div>
             <button class="user__steam">
               <SteamIcon class="icon-30 icon-30-w icon" />
-              <span>Steam Profile</span>
+              <span class="text">Steam Profile</span>
             </button>
           </div>
 
@@ -34,70 +34,42 @@
 
             <div class="gameTable__lines">
               <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_cashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_cashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
+                <span class="table__cell table__cell_id">#835062</span>
+                <span class="table__cell table__cell_img"><img src="" alt="" class="table__img"></span>
+                <span class="table__cell table__status table__status_cashed">
+                  <span class="table__cell_title">status</span>
+                  <span>Cashed Out</span>
+                </span>
+                <span class="table__cell table__cell_right table__status_cashed">
+                  <span class="table__cell_title">earnings</span>
+                  <span>$0.48</span>
+                </span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">multiplier</span><span>1.10x</span></span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">bet</span><span>$4.82</span></span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">date</span><span>01.06.2020</span> </span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">time</span><span>16:48:53</span></span>
               </div>
               <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_cashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_cashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
-              </div>
-              <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_crashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_crashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
-              </div>
-              <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_crashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_crashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
-              </div>
-              <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_crashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_crashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
-              </div>
-              <div class="table__line">
-                <span class="table__cell">#835062</span>
-                <span class="table__cell"><img src="" alt="" class="table__img"></span>
-                <span class="table__cell table__status table__status_crashed">Cashed Out</span>
-                <span class="table__cell table__cell_right table__status_crashed">$0.48</span>
-                <span class="table__cell table__cell_right">1.10x</span>
-                <span class="table__cell table__cell_right">$4.82</span>
-                <span class="table__cell table__cell_right">01.06.2020 </span>
-                <span class="table__cell table__cell_right">16:48:53</span>
+                <span class="table__cell table__cell_id">#835062</span>
+                <span class="table__cell table__cell_img"><img src="" alt="" class="table__img"></span>
+                <span class="table__cell table__status table__status_crashed">
+                  <span class="table__cell_title">status</span>
+                  <span>Cashed Out</span>
+                </span>
+                <span class="table__cell table__cell_right table__status_crashed">
+                  <span class="table__cell_title">earnings</span>
+                  <span>$0.48</span>
+                </span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">multiplier</span><span>1.10x</span></span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">bet</span><span>$4.82</span></span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">date</span><span>01.06.2020</span> </span>
+                <span class="table__cell table__cell_right"><span class="table__cell_title">time</span><span>16:48:53</span></span>
               </div>
             </div>
           </div>
           <Footer />
         </div>
-        <Chat />
+        <Chat class="mobileChat" />
       </div>
     </div>
   </main>
@@ -119,6 +91,7 @@ export default {
 
 <style lang="sass">
 @import '../theme/_var'
+@import '../theme/_mix'
 .user
   &-content
     display: flex
@@ -134,6 +107,9 @@ export default {
     padding: 24px
     display: flex
     align-items: center
+    +lg
+      margin-bottom: 16px
+      padding: 16px
   &__img
     width: 64px
     height: 64px
@@ -154,11 +130,22 @@ export default {
     font-weight: 600
     margin-left: auto
     box-shadow: $main-shadow
-    span
+    +lg
+      width: 48px
+      height: 48px
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+    .text
       font-size: 16px
       line-height: 24px
+      +lg
+        display: none
     .icon
       margin-right: 12px
+      +lg
+        margin-right: 0
 .gameTable
   margin-bottom: auto
   position: relative
@@ -166,13 +153,19 @@ export default {
     position: absolute
     bottom: 0
     left: -20px
-    width: calc(100% + 20px + 24px)
+    width: calc(100% + 20px + 20px)
     background-image: linear-gradient(to bottom, rgba(33, 36, 41, 0), #212429)
     z-index: 5
     height: 128px
   &__lines
     height: calc(100vh - 96px - 24px - 112px - 24px - 46px - 56px - 16px)
     overflow-y: auto
+    margin-left: -20px
+    padding-left: 20px
+    +lg
+      height: calc(100vh - 48px - 82px - 32px - 112px)
+      margin-right: -20px
+      padding-right: 20px
 .table
   &__titles
     display: flex
@@ -185,8 +178,31 @@ export default {
     color: rgba(224, 224, 255, 0.6)
   &__cell
     width: 12.5%
+    +lg
+      width: 100% !important
+      display: flex
+      align-items: center
+      justify-content: space-between
+      margin-bottom: 4px
     &_right
       text-align: right
+    &_img
+      +lg
+        width: 50% !important
+        justify-content: flex-end
+    &_id
+      +lg
+        width: 50% !important
+    &_title
+      display: none
+      +lg
+        display: block
+        color: rgba(224, 224, 255, 0.6)
+        font-size: 13px
+        line-height: 24px
+        letter-spacing: 1px
+        text-transform: uppercase
+        font-weight: 600
   &__line
     padding: 12px 19px
     background-image: linear-gradient(94deg, #2d2f33 1%, #272a2e 52%, #222529)
@@ -198,8 +214,13 @@ export default {
     font-weight: bold
     display: flex
     align-items: center
+    +lg
+      flex-wrap: wrap
+      padding: 24px !important
     &:last-child
       margin-bottom: 100px
+      +lg
+        margin-bottom: 50px
   &__img
     width: 72px
     height: 48px
@@ -208,5 +229,5 @@ export default {
     &_cashed
       color: #00ffaa
     &_crashed
-      color: #f54562
+      color: #ff00aa
 </style>

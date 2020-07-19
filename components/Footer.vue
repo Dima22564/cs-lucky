@@ -14,6 +14,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import '../theme/_mix'
 .footer
   margin: 8px 0
   padding: 16px 12px
@@ -22,6 +23,8 @@ export default {
   justify-content: space-between
   color: rgba(224, 224, 255, 0.6)
   font-weight: 500
+  +lg
+    display: none
   &__link
     cursor: pointer
   .emp

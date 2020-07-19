@@ -1,5 +1,5 @@
 <template>
-  <div class="cs-lucky-container">
+  <div v-show="getWindowSize > 1080" class="cs-lucky-container">
     <div class="cs-lucky-menu">
       <div class="cs-lucky-menu__left">
         <nuxt-link tag="div" to="/" class="cs-lucky-menu__logo">
@@ -27,25 +27,66 @@
           <a href="" class="cs-lucky-menu__social-link">
             <VkIcon />
           </a>
-          <div class="notifications">
-            <div class="notifications__icon">
+          <div class="notifications__wrapper">
+            <div @click="showNotifications" class="notifications__icon">
               <BellIcon class="icon-30" />
-              <span class="notifications__num">20</span>
+              <span class="notifications__num">{{ getNotifications.length }}</span>
             </div>
+            <transition name="fade">
+              <div v-if="isNotificationShow" @mouseleave="isNotificationShow = false" class="notifications">
+                <p class="notifications__title">
+                  notifications
+                </p>
+                <p v-if="getNotifications.length == 0" class="notifications__none">
+                  No notifications
+                </p>
+                <div v-else>
+                  <Notification
+                    v-for="(item, index) in getNotifications"
+                    :key="index"
+                    :notification-type="item.type"
+                    :id="item.id"
+                  >
+                    <p><span class="blue">{{ item.blueText }} </span>sent you <span class="white"> {{ item.whiteText }}</span></p>
+                  </Notification>
+                </div>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
 
       <div class="cs-lucky-menu__right">
-        <img src="/images/avatar.jpg" alt="" class="cs-lucky-menu__avatar">
-        <div class="cs-lucky-menu__wrapper">
-          <div class="cs-lucky-menu__text">
-            <p class="cs-lucky-menu__name">
+        <transition name="fade">
+          <div v-if="isAccountShow" @mouseleave="isAccountShow = false" class="account__drop">
+            <p class="account__name">
               vino_costa
             </p>
-            <p class="cs-lucky-menu__balance">
-              Balance: <span class="emp">$28,309</span>
-            </p>
+            <nuxt-link class="account__link" to="/dashboard" tag="div">
+              <Dashboard class="icon" />
+              <span>Dashboard</span>
+            </nuxt-link>
+            <nuxt-link class="account__link" to="/settings" tag="div">
+              <SettingsIcon class="icon" />
+              <span>Settings</span>
+            </nuxt-link>
+            <nuxt-link class="account__link account__link_logout" to="/signout" tag="div">
+              <LogoutIcon class="icon" />
+              <span>Sign Out</span>
+            </nuxt-link>
+          </div>
+        </transition>
+        <div @click="isAccountShow ? isAccountShow = false : isAccountShow = true" class="cs-lucky-menu__right-2">
+          <img src="/images/avatar.jpg" alt="" class="cs-lucky-menu__avatar">
+          <div class="cs-lucky-menu__wrapper">
+            <div class="cs-lucky-menu__text">
+              <p class="cs-lucky-menu__name">
+                vino_costa
+              </p>
+              <p class="cs-lucky-menu__balance">
+                Balance: <span class="emp">$28,309</span>
+              </p>
+            </div>
           </div>
         </div>
         <button class="cs-lucky-menu__add">
@@ -65,10 +106,19 @@ import TelegramIcon from 'vue-material-design-icons/Telegram.vue'
 import VkIcon from 'vue-material-design-icons/Vk.vue'
 import BellIcon from 'vue-material-design-icons/Bell.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
+import { eventBus } from '../plugins/event-bus.js'
+import Notification from './Notification'
 export default {
+  data () {
+    return {
+      isNotificationShow: false,
+      isAccountShow: false
+    }
+  },
   computed: {
     ...mapGetters({
-      getWindowSize: 'common/getWindowSize'
+      getWindowSize: 'common/getWindowSize',
+      getNotifications: 'notifications/getNotifications'
     })
   },
   mounted () {
@@ -80,10 +130,26 @@ export default {
       that.setWindowSize(windowSize)
     })
   },
+  created () {
+    eventBus.$on('closeNotification', (id) => {
+      this.$store.commit('notifications/deleteNotification', id)
+    })
+  },
   methods: {
     ...mapMutations({
       setWindowSize: 'common/setWindowSize'
-    })
+    }),
+    showNotifications () {
+      // this.isLangsShow = false
+      if (this.isNotificationShow === true) {
+        this.isNotificationShow = false
+      } else {
+        this.isNotificationShow = true
+      }
+      // this.isAccountShow = false
+      // this.isFinancialShow = false
+      // this.isMobileMainMenuShow = false
+    }
   },
   components: {
     HomeIcon,
@@ -92,7 +158,8 @@ export default {
     TelegramIcon,
     VkIcon,
     BellIcon,
-    PlusIcon
+    PlusIcon,
+    Notification
   }
 }
 </script>
@@ -117,6 +184,12 @@ export default {
     display: flex
     align-items: center
     padding: 16px 24px 16px 16px
+    position: relative
+    &-2
+      display: flex
+      align-items: center
+      position: relative
+      cursor: pointer
   &__avatar
     border-radius: 50%
     flex-shrink: 0
@@ -189,6 +262,8 @@ export default {
   &__icon
     cursor: pointer
     position: relative
+  &__wrapper
+    position: relative
   &__num
     color: $white
     @extend %font-13-16
@@ -199,4 +274,95 @@ export default {
     position: absolute
     top: -10px
     right: -10px
+.fade-enter-active, .fade-leave-active
+  transition: opacity .5s
+.fade-enter, .fade-leave-to
+  opacity: 0
+.account
+  position: relative
+  &__icon
+    display: flex
+    align-items: center
+    color: rgba(224, 224, 255, 0.4)
+    font-size: 21px
+    cursor: pointer
+  &__img
+    width: 48px
+    height: 48px
+    border-radius: 50%
+    flex-shrink: 0
+    margin-right: 8px
+  &__drop
+    border-radius: 24px
+    box-shadow: 16px 16px 48px 0 rgba(9, 14, 20, 0.4), -8px -8px 16px 0 rgba(224, 224, 255, 0.04), 0 8px 8px 0 rgba(9, 14, 20, 0.4)
+    background-image: linear-gradient(123deg, #2d2f33, #222529 100%)
+    background-color: #27273e
+    z-index: 55
+    position: absolute
+    left: 0
+    bottom: 0
+    transform: translateY(calc(100%))
+    min-width: 255px
+    padding: 16px 0
+  &__name
+    padding: 0 16px
+    text-transform: uppercase
+    font-size: 14px
+    color: rgba(224, 224, 255, 0.6)
+    font-weight: 600
+    margin-bottom: 24px
+  &__arrow
+    transition: all 0.2s
+    &_rotate
+      transform: rotate(180deg)
+  &__link
+    padding: 9px 20px
+    color: white
+    font-size: 14px
+    font-weight: 500
+    cursor: pointer
+    user-select: none
+    &_logout
+      margin-top: 16px
+    &:hover
+      background: rgba(224, 224, 255, 0.02)
+    .icon
+      color: #e0e0ff
+      opacity: 0.6
+      margin-right: 5px
+.notifications
+  position: absolute
+  right: 0
+  bottom: 0
+  transform: translateY(calc(100% + 8px))
+  min-width: 328px
+  border-radius: 12px
+  box-shadow: $dark-shadow
+  background-image: linear-gradient(140deg, #2d2f33, #222529)
+  z-index: 10
+  padding: 16px 0
+  &__none
+    color: rgba(224,224,255,.6)
+    font-weight: 600
+    font-size: 16px
+    width: 100%
+    text-align: center
+  &__count
+    font-size: 13px
+    line-height: 16px
+    color: white
+    background: #00bbff
+    position: absolute
+    top: 0
+    right: 0
+    padding: 1px 4px
+    border-radius: 12px
+  &__title
+    text-transform: uppercase
+    margin-bottom: 24px
+    font-size: 14px
+    font-weight: 600
+    color: rgba(224, 224, 255, 0.6)
+    letter-spacing: 1px
+    padding: 0 16px
 </style>

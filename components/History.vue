@@ -53,6 +53,7 @@ export default {
 
 <style lang="sass">
 @import '../theme/_var'
+@import '../theme/_mix'
 .historyItem
   background-image: linear-gradient(96deg, #2d2f33 1%, #272a2e 52%, #222529)
   box-shadow: $dark-shadow
@@ -63,8 +64,12 @@ export default {
   // width: calc(100% + 17px)
   &:not(:last-child)
     margin-bottom: 24px
+    +lg
+      margin-bottom: 16px
   &:last-child
     margin-bottom: 100px
+    +lg
+      margin-bottom: 50px
   &__avatar
     width: 48px
     height: 48px
@@ -82,6 +87,8 @@ export default {
   &__wrapper
     margin-right: 38px
     position: relative
+    +media(1330)
+      display: none
   &__weapon
     border-radius: 12px
     background-color: rgba(224, 224, 255, 0.02)
