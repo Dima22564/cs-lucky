@@ -72,43 +72,43 @@
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf']"
-                avatar="df"
+                :items="['/images/it-1.png']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
             </div>
           </div>

@@ -1,97 +1,102 @@
 <template>
-  <div v-show="getWindowSize > 1080" class="cs-lucky-container">
-    <div class="cs-lucky-menu">
-      <div class="cs-lucky-menu__left">
-        <nuxt-link tag="div" to="/" class="cs-lucky-menu__logo">
-          LOGO
-        </nuxt-link>
-        <div class="cs-lucky-menu__links">
-          <nuxt-link exact to="/" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active">
-            <HomeIcon class="icon icon-30" />
-            <span>Home</span>
+  <div>
+    <transition name="fade">
+      <DepositPopup />
+    </transition>
+    <div v-show="getWindowSize > 1080" class="cs-lucky-container">
+      <div class="cs-lucky-menu">
+        <div class="cs-lucky-menu__left">
+          <nuxt-link tag="div" to="/" class="cs-lucky-menu__logo">
+            LOGO
           </nuxt-link>
-          <nuxt-link exact to="/faq" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active">
-            <CommentIcon class="icon icon-30" />
-            <span>FAQ</span>
-          </nuxt-link>
-          <nuxt-link to="/support" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active" exact>
-            <ForumIcon class="icon icon-30" />
-            <span>Support</span>
-          </nuxt-link>
-        </div>
+          <div class="cs-lucky-menu__links">
+            <nuxt-link exact to="/" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active">
+              <HomeIcon class="icon icon-30" />
+              <span>Home</span>
+            </nuxt-link>
+            <nuxt-link exact to="/faq" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active">
+              <CommentIcon class="icon icon-30" />
+              <span>FAQ</span>
+            </nuxt-link>
+            <nuxt-link to="/support" tag="div" class="cs-lucky-menu__link" active-class="cs-lucky-menu__link_active" exact>
+              <ForumIcon class="icon icon-30" />
+              <span>Support</span>
+            </nuxt-link>
+          </div>
 
-        <div class="cs-lucky-menu__social">
-          <a href="" class="cs-lucky-menu__social-link">
-            <TelegramIcon />
-          </a>
-          <a href="" class="cs-lucky-menu__social-link">
-            <VkIcon />
-          </a>
-          <div class="notifications__wrapper">
-            <div @click="showNotifications" class="notifications__icon">
-              <BellIcon class="icon-30" />
-              <span class="notifications__num">{{ getNotifications.length }}</span>
-            </div>
-            <transition name="fade">
-              <div v-if="isNotificationShow" @mouseleave="isNotificationShow = false" class="notifications">
-                <p class="notifications__title">
-                  notifications
-                </p>
-                <p v-if="getNotifications.length == 0" class="notifications__none">
-                  No notifications
-                </p>
-                <div v-else>
-                  <Notification
-                    v-for="(item, index) in getNotifications"
-                    :key="index"
-                    :notification-type="item.type"
-                    :id="item.id"
-                  >
-                    <p><span class="blue">{{ item.blueText }} </span>sent you <span class="white"> {{ item.whiteText }}</span></p>
-                  </Notification>
-                </div>
+          <div class="cs-lucky-menu__social">
+            <a href="" class="cs-lucky-menu__social-link">
+              <TelegramIcon />
+            </a>
+            <a href="" class="cs-lucky-menu__social-link">
+              <VkIcon />
+            </a>
+            <div class="notifications__wrapper">
+              <div @click="showNotifications" class="notifications__icon">
+                <BellIcon class="icon-30" />
+                <span class="notifications__num">{{ getNotifications.length }}</span>
               </div>
-            </transition>
+              <transition name="fade">
+                <div v-if="isNotificationShow" @mouseleave="isNotificationShow = false" class="notifications">
+                  <p class="notifications__title">
+                    notifications
+                  </p>
+                  <p v-if="getNotifications.length == 0" class="notifications__none">
+                    No notifications
+                  </p>
+                  <div v-else>
+                    <Notification
+                      v-for="(item, index) in getNotifications"
+                      :key="index"
+                      :notification-type="item.type"
+                      :id="item.id"
+                    >
+                      <p><span class="blue">{{ item.blueText }} </span>sent you <span class="white"> {{ item.whiteText }}</span></p>
+                    </Notification>
+                  </div>
+                </div>
+              </transition>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="cs-lucky-menu__right">
-        <transition name="fade">
-          <div v-if="isAccountShow" @mouseleave="isAccountShow = false" class="account__drop">
-            <p class="account__name">
-              vino_costa
-            </p>
-            <nuxt-link class="account__link" to="/dashboard" tag="div">
-              <Dashboard class="icon" />
-              <span>Dashboard</span>
-            </nuxt-link>
-            <nuxt-link class="account__link" to="/settings" tag="div">
-              <SettingsIcon class="icon" />
-              <span>Settings</span>
-            </nuxt-link>
-            <nuxt-link class="account__link account__link_logout" to="/signout" tag="div">
-              <LogoutIcon class="icon" />
-              <span>Sign Out</span>
-            </nuxt-link>
-          </div>
-        </transition>
-        <div @click="isAccountShow ? isAccountShow = false : isAccountShow = true" class="cs-lucky-menu__right-2">
-          <img src="/images/avatar.jpg" alt="" class="cs-lucky-menu__avatar">
-          <div class="cs-lucky-menu__wrapper">
-            <div class="cs-lucky-menu__text">
-              <p class="cs-lucky-menu__name">
+        <div class="cs-lucky-menu__right">
+          <transition name="fade">
+            <div v-if="isAccountShow" @mouseleave="isAccountShow = false" class="account__drop">
+              <p class="account__name">
                 vino_costa
               </p>
-              <p class="cs-lucky-menu__balance">
-                Balance: <span class="emp">$28,309</span>
-              </p>
+              <nuxt-link class="account__link" to="/dashboard" tag="div">
+                <Dashboard class="icon" />
+                <span>Dashboard</span>
+              </nuxt-link>
+              <nuxt-link class="account__link" to="/settings" tag="div">
+                <SettingsIcon class="icon" />
+                <span>Settings</span>
+              </nuxt-link>
+              <nuxt-link class="account__link account__link_logout" to="/signout" tag="div">
+                <LogoutIcon class="icon" />
+                <span>Sign Out</span>
+              </nuxt-link>
+            </div>
+          </transition>
+          <div @click="isAccountShow ? isAccountShow = false : isAccountShow = true" class="cs-lucky-menu__right-2">
+            <img src="/images/avatar.jpg" alt="" class="cs-lucky-menu__avatar">
+            <div class="cs-lucky-menu__wrapper">
+              <div class="cs-lucky-menu__text">
+                <p class="cs-lucky-menu__name">
+                  vino_costa
+                </p>
+                <p class="cs-lucky-menu__balance">
+                  Balance: <span class="emp">$28,309</span>
+                </p>
+              </div>
             </div>
           </div>
+          <button @click="showDepositPopup" class="cs-lucky-menu__add">
+            <PlusIcon />
+          </button>
         </div>
-        <button class="cs-lucky-menu__add">
-          <PlusIcon />
-        </button>
       </div>
     </div>
   </div>
@@ -107,6 +112,7 @@ import VkIcon from 'vue-material-design-icons/Vk.vue'
 import BellIcon from 'vue-material-design-icons/Bell.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import { eventBus } from '../plugins/event-bus.js'
+import DepositPopup from './Deposit-popup'
 import Notification from './Notification'
 export default {
   data () {
@@ -149,6 +155,9 @@ export default {
       // this.isAccountShow = false
       // this.isFinancialShow = false
       // this.isMobileMainMenuShow = false
+    },
+    showDepositPopup () {
+      eventBus.$emit('depositPopupShow')
     }
   },
   components: {
@@ -159,7 +168,8 @@ export default {
     VkIcon,
     BellIcon,
     PlusIcon,
-    Notification
+    Notification,
+    DepositPopup
   }
 }
 </script>

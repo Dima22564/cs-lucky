@@ -1,12 +1,14 @@
 <template>
   <div class="historyItem">
-    <img :src="avatar" alt="" class="historyItemItem__avatar">
+    <img :src="avatar" alt="" class="historyItem__avatar">
     <div class="historyItem__wrapper">
       <button v-if="items.length > 3" class="historyItem__circle">
         3+
       </button>
       <div class="historyItem__weapons">
-        <img v-for="(item, index) in items" :key="index" :src="item" alt="" class="historyItem__weapon">
+        <div v-for="(item, index) in items" :key="index" class="historyItem__weaponWrapper">
+          <img :src="item" alt="" class="historyItem__weapon">
+        </div>
       </div>
     </div>
 
@@ -84,12 +86,7 @@ export default {
     max-width: 216px
     position: relative
     overflow: hidden
-  &__wrapper
-    margin-right: 38px
-    position: relative
-    +media(1330)
-      display: none
-  &__weapon
+  &__weaponWrapper
     border-radius: 12px
     background-color: rgba(224, 224, 255, 0.02)
     display: flex
@@ -100,6 +97,13 @@ export default {
     flex-shrink: 0
     &:not(:last-child)
       margin-right: 12px
+  &__wrapper
+    margin-right: 38px
+    position: relative
+    +media(1330)
+      display: none
+  &__weapon
+    width: 70%
   &__circle
     width: 24px
     height: 24px

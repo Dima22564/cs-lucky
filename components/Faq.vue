@@ -74,6 +74,7 @@ export default {
   &__title
     @extend %font-18-24
     font-weight: 500
+    margin-bottom: 0
   &__text
     color: rgba(224, 224, 255, 0.6)
     font-weight: 500

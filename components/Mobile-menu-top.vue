@@ -4,7 +4,7 @@
       <MenuIcon class="mobileMenuTop__bars icon-30 icon-30-w" />
     </div>
     <div class="mobileMenuTop__bars">
-      <PlusIcon class="icon-30 icon-30-w" />
+      <PlusIcon @click="showDepositPopup" class="icon-30 icon-30-w" />
     </div>
   </div>
 </template>
@@ -13,6 +13,7 @@
 import { mapGetters } from 'vuex'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import MenuIcon from 'vue-material-design-icons/Menu.vue'
+import { eventBus } from '../plugins/event-bus.js'
 export default {
   components: {
     PlusIcon,
@@ -23,6 +24,11 @@ export default {
       getWindowSize: 'common/getWindowSize',
       getNotifications: 'notifications/getNotifications'
     })
+  },
+  methods: {
+    showDepositPopup () {
+      eventBus.$emit('depositPopupShow')
+    }
   }
 }
 </script>

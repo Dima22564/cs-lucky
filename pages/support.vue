@@ -79,7 +79,9 @@
             <div v-if="(currentTab === 'messages' && getWindowSize < 768) || getWindowSize >= 768" class="support__messages">
               <div class="messages__top">
                 <div class="supportChat">
-                  <div class="supportChat__img" />
+                  <div class="supportChat__img">
+                    <EmailIcon />
+                  </div>
                   <div class="supportChat__text">
                     <p class="supportChat__name">
                       Support Center
@@ -106,11 +108,40 @@
                     </p>
                   </div>
                 </div>
+                <div class="supportMessage">
+                  <img src="" alt="" class="supportMessage__img">
+                  <div class="supportMessage__wrapper">
+                    <p class="supportMessage__marks">
+                      Angela
+                    </p>
+                    <p class="supportMessage__text">
+                      Your payment might be delayed for 5-10 minutes. If money didn’t get transferred within an hour, please contact the support, write details of payment to Security Support
+                    </p>
+                    <p class="supportMessage__marks">
+                      3:54 PM
+                    </p>
+                  </div>
+                </div>
+                <div class="supportMessage">
+                  <img src="" alt="" class="supportMessage__img">
+                  <div class="supportMessage__wrapper">
+                    <p class="supportMessage__marks">
+                      Angela
+                    </p>
+                    <p class="supportMessage__text">
+                      Your payment might be delayed for 5-10 minutes. If money didn’t get transferred within an hour, please contact the support, write details of payment to Security Support
+                    </p>
+                    <p class="supportMessage__marks">
+                      3:54 PM
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <form class="messages__bottom sendForm">
                 <label for="file" class="sendForm__file">
                   <input id="file" class="sendForm__fileInput" type="file" name="file">
+                  <ClipIcon />
                 </label>
                 <textarea id="" name="" class="sendForm__text" placeholder="Your message" />
                 <button class="sendForm__btn">
@@ -131,6 +162,7 @@
 import { mapGetters } from 'vuex'
 import ArrowIcon from 'vue-material-design-icons/ArrowUp.vue'
 import EmailIcon from 'vue-material-design-icons/Email.vue'
+import ClipIcon from 'vue-material-design-icons/Paperclip.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import ShieldIcon from 'vue-material-design-icons/ShieldHalfFull.vue'
 import LayerIcon from 'vue-material-design-icons/Layers.vue'
@@ -149,7 +181,8 @@ export default {
     ShieldIcon,
     LayerIcon,
     UserIcon,
-    RightArrowIcon
+    RightArrowIcon,
+    ClipIcon
   },
   data () {
     return {
@@ -282,7 +315,8 @@ export default {
     padding: 8px
   &__messages
     overflow-y: auto
-    height: calc(100% - 96px - 20px - 48px - 24px - 20px)
+    // height: calc(100vh - 96px - 20px - 48px - 24px - 20px)
+    height: calc(100vh - 96px - 24px - 58px - 16px - 104px - 105px)
     padding: 0 24px
   &__bottom
     display: flex
@@ -327,6 +361,10 @@ export default {
     background-color: rgba(224, 224, 255, 0.02)
     cursor: pointer
     flex-shrink: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    color: rgba(224, 224, 255, 0.6)
   &__text
     width: 100%
     padding: 12px 16px

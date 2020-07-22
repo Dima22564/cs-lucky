@@ -59,6 +59,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -72,6 +73,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -85,6 +87,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -98,6 +101,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -111,6 +115,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -124,6 +129,7 @@
                   </span>
                   <span class="choose__item-circle" />
                 </div>
+                <img class="choose__item-img" src="/images/item.png" alt="">
 
                 <div class="choose__item-bottom">
                   <span class="text">Factorthrfhrtg</span>
@@ -136,7 +142,9 @@
 
         <div class="cs-lucky-main--center">
           <div v-if="(getCurrentTab === 'game' && getWindowSize < 1080) || getWindowSize >= 1080" class="knife">
-            <div class="knife__left" />
+            <div class="knife__left">
+              <img src="/images/knife.png" alt="">
+            </div>
             <div class="knife__right">
               <div class="knife__line">
                 <p class="text">
@@ -164,7 +172,9 @@
               </div>
 
               <div class="knife__btns">
-                <button class="knife__btn-1">2.0</button>
+                <button class="knife__btn-1">
+                  2.0
+                </button>
                 <button class="knife__btn-2">
                   <span>Receive</span>
                   <span>x1.5</span>
@@ -230,50 +240,50 @@
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf']"
-                avatar="df"
+                :items="['/images/it-1.png']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
               <History
                 :cost="12.2"
                 :cost2="15.2"
                 :coeff="2.30"
-                :items="['sddsf', 'sdfsdf', 'dfrf', 'fergfe']"
-                avatar="df"
+                :items="['/images/it-1.png', '/images/it-2.png', '/images/it-3.png', 'fergfe']"
+                avatar="/images/avatar-2.png"
               />
             </div>
           </div>
@@ -499,6 +509,11 @@ export default {
     border-radius: 12px
     background-color: rgba(224, 224, 255, 0.02)
     margin-bottom: 24px
+    display: flex
+    flex-direction: column
+    &-img
+      width: 70%
+      margin: 10px auto
     &-top
       display: flex
       align-items: center
@@ -598,6 +613,9 @@ export default {
   &__left
     position: relative
     height: 100%
+    margin-right: 25px
+    +media(1400)
+      display: none
   &__right
     padding: 24px
     width: 100%
